@@ -1,6 +1,7 @@
 package com.example.demo.models;
 
 import com.example.demo.models.Tarea;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +25,8 @@ public class Usuario {
     
     private Boolean estado;
     
-    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<Tarea> tareas = new ArrayList<>();
     
     public Integer getUsuarioId() {

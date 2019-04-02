@@ -17,9 +17,8 @@ public class Tarea {
 	
 	private Boolean estado;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne()
     @JoinColumn(name = "usuario_id")
-    @JsonIgnore
 	private Usuario usuario;
 
 	public Integer getTareaId() {
