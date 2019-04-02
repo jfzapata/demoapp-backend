@@ -11,6 +11,10 @@ import com.example.demo.exceptions.ResourceNotFoundException;
 import javax.validation.Valid;
 
 import java.util.List;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Calendar;
 
 @RestController
 @RequestMapping("/api")
@@ -33,6 +37,11 @@ public class UsuarioController {
 
 	@PostMapping("/usuarios")
 	public Usuario createUsuario(@Valid @RequestBody Usuario usuario) {
+		Date date = Calendar.getInstance().getTime();  
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+        String strDate = dateFormat.format(date);  
+        usuario.setFechaCreacion(strDate); 
+                
 	    return usuarioRepository.save(usuario);
 	}
 

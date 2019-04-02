@@ -10,6 +10,10 @@ import com.example.demo.exceptions.ResourceNotFoundException;
 
 import javax.validation.Valid;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -38,6 +42,11 @@ public class TareaController {
 
 	@PostMapping("/tareas")
 	public Tarea createTarea(@Valid @RequestBody Tarea tarea) {
+		Date date = Calendar.getInstance().getTime();  
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+        String strDate = dateFormat.format(date);  
+        tarea.setFechaCreacion(strDate); 
+        
 	    return tareaRepository.save(tarea);
 	}
 
