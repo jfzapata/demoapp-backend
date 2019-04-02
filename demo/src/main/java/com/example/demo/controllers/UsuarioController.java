@@ -1,7 +1,5 @@
 package com.example.demo.controllers;
 
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,12 +21,12 @@ public class UsuarioController {
 	
 
 	@GetMapping("/usuarios")
-	public List<Usuario> getAsesores() {
+	public List<Usuario> getUsuarios() {
 	    return usuarioRepository.findAll();
 	}
 	
 	@GetMapping("/usuarios/{id}")
-	public Usuario getAsesorById(@PathVariable(value = "id") Integer usuarioId) {
+	public Usuario getUsuarioById(@PathVariable(value = "id") Integer usuarioId) {
 	    return usuarioRepository.findById(usuarioId)
 	            .orElseThrow(() -> new ResourceNotFoundException("Usuarios", "id", usuarioId));
 	}
