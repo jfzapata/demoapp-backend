@@ -1,7 +1,5 @@
 package com.example.demo.models;
 
-import java.util.Date;
-
 import javax.persistence.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -13,9 +11,9 @@ public class Tarea {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer tareaId;
 	
-	private Date fechaCreacion;
+	private String fechaCreacion;
 	
-	private Date fechaEjecucion;
+	private String fechaEjecucion;
 	
 	private Boolean estado;
 	
@@ -32,19 +30,19 @@ public class Tarea {
 		this.tareaId = tareaId;
 	}
 
-	public Date getFechaCreacion() {
+	public String getFechaCreacion() {
 		return fechaCreacion;
 	}
 
-	public void setFechaCreacion(Date fechaCreacion) {
+	public void setFechaCreacion(String fechaCreacion) {
 		this.fechaCreacion = fechaCreacion;
 	}
 
-	public Date getFechaEjecucion() {
+	public String getFechaEjecucion() {
 		return fechaEjecucion;
 	}
 
-	public void setFechaEjecucion(Date fechaEjecucion) {
+	public void setFechaEjecucion(String fechaEjecucion) {
 		this.fechaEjecucion = fechaEjecucion;
 	}
 

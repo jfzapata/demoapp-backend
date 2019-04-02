@@ -10,7 +10,6 @@ import com.example.demo.exceptions.ResourceNotFoundException;
 
 import javax.validation.Valid;
 
-import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -38,7 +37,6 @@ public class TareaController {
 
 	@PostMapping("/tareas")
 	public Tarea createUsuario(@Valid @RequestBody Tarea tarea) {
-		tarea.setFechaCreacion(new Date());
 	    return tareaRepository.save(tarea);
 	}
 

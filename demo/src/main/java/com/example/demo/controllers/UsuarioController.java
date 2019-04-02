@@ -10,7 +10,6 @@ import com.example.demo.exceptions.ResourceNotFoundException;
 
 import javax.validation.Valid;
 
-import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -33,7 +32,6 @@ public class UsuarioController {
 
 	@PostMapping("/usuarios")
 	public Usuario createUsuario(@Valid @RequestBody Usuario usuario) {
-		usuario.setFechaCreacion(new Date());
 	    return usuarioRepository.save(usuario);
 	}
 
@@ -48,6 +46,7 @@ public class UsuarioController {
 		usuario.setNombres(nuevoUsuario.getNombres());
 		usuario.setApellidos(nuevoUsuario.getApellidos());
 		usuario.setEstado(nuevoUsuario.getEstado());
+		usuario.setFechaCreacion(nuevoUsuario.getFechaCreacion());
 
 	    Usuario usuarioActualizado = usuarioRepository.save(usuario);
 	    return usuarioActualizado;

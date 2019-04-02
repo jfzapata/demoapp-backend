@@ -3,7 +3,6 @@ package com.example.demo.models;
 import com.example.demo.models.Tarea;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.*;
@@ -21,7 +20,7 @@ public class Usuario {
 	
     private String apellidos;
     
-    private Date fechaCreacion;
+    private String fechaCreacion;
     
     private Boolean estado;
     
@@ -52,11 +51,11 @@ public class Usuario {
 		this.apellidos = apellidos;
 	}
 	
-	public Date getFechaCreacion() {
+	public String getFechaCreacion() {
 		return fechaCreacion;
 	}
 	
-	public void setFechaCreacion(Date fechaCreacion) {
+	public void setFechaCreacion(String fechaCreacion) {
 		this.fechaCreacion = fechaCreacion;
 	}
 	
