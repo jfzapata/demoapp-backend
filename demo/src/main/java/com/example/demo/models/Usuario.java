@@ -1,6 +1,10 @@
 package com.example.demo.models;
 
+import com.example.demo.models.Tarea;
+
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -20,6 +24,9 @@ public class Usuario {
     private Date fechaCreacion;
     
     private Boolean estado;
+    
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Tarea> tareas = new ArrayList<>();
     
     public Integer getUsuarioId() {
 		return usuarioId;
@@ -60,6 +67,13 @@ public class Usuario {
 	public void setEstado(Boolean estado) {
 		this.estado = estado;
 	}
-    
+
+	public List<Tarea> getTareas() {
+		return tareas;
+	}
+
+	public void setTareas(List<Tarea> tareas) {
+		this.tareas = tareas;
+	}
     
 }
