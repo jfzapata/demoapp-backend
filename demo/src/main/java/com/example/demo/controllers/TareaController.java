@@ -36,13 +36,13 @@ public class TareaController {
 	}
 
 	@PostMapping("/tareas")
-	public Tarea createUsuario(@Valid @RequestBody Tarea tarea) {
+	public Tarea createTarea(@Valid @RequestBody Tarea tarea) {
 	    return tareaRepository.save(tarea);
 	}
 
 
 	@PutMapping("/tareas/{id}")
-	public Tarea updateUsuario(@PathVariable(value = "id") Integer tareaId,
+	public Tarea updateTarea(@PathVariable(value = "id") Integer tareaId,
 	                                        @Valid @RequestBody Tarea nuevaTarea) {
 
 		Tarea tarea = tareaRepository.findById(tareaId)
@@ -57,7 +57,7 @@ public class TareaController {
 	}
 
 	@DeleteMapping("/tareas/{id}")
-	public ResponseEntity<?> deleteUsuario(@PathVariable(value = "id") Integer tareaId) {
+	public ResponseEntity<?> deleteTarea(@PathVariable(value = "id") Integer tareaId) {
 		Tarea tarea = tareaRepository.findById(tareaId)
 	            .orElseThrow(() -> new ResourceNotFoundException("Tareas", "id", tareaId));
 
