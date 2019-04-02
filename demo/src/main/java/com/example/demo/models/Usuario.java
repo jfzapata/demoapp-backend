@@ -11,7 +11,7 @@ public class Usuario {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private String usuarioId;
+	private Integer usuarioId;
 	
 	private String nombres;
 	
@@ -21,11 +21,11 @@ public class Usuario {
     
     private Boolean estado;
     
-    public String getUsuarioId() {
+    public Integer getUsuarioId() {
 		return usuarioId;
 	}
 
-	public void setUsuarioId(String usuarioId) {
+	public void setUsuarioId(Integer usuarioId) {
 		this.usuarioId = usuarioId;
 	}
     
