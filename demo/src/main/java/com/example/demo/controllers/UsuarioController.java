@@ -38,7 +38,7 @@ public class UsuarioController {
 	@PostMapping("/usuarios")
 	public Usuario createUsuario(@Valid @RequestBody Usuario usuario) {
 		Date date = Calendar.getInstance().getTime();  
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String strDate = dateFormat.format(date);  
         usuario.setFechaCreacion(strDate); 
                 
