@@ -1,6 +1,7 @@
 package com.example.demo.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,16 +17,24 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 @RestController
 @RequestMapping("/api")
 @CrossOrigin(origins = "*")
 public class TareaController {
+	private final static Logger logger = LoggerFactory.getLogger(TareaController.class);
+	
 	@Autowired
 	TareaRepository tareaRepository;
 	
 
 	@GetMapping("/tareas")
-	public List<Tarea> getTareas() {
+	public List<Tarea> getTareas(@RequestHeader HttpHeaders headers) {
+		// The headers sent using request template
+		logger.info(headers.get(HttpHeaders.AUTHORIZATION).get(0));
+		logger.info("Message");
 	    return tareaRepository.findAll();
 	}
 	

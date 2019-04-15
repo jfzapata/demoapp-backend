@@ -1,9 +1,14 @@
 package com.example.demo.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
+import com.example.demo.models.Tarea;
 import com.example.demo.models.Usuario;
 import com.example.demo.repositories.UsuarioRepository;
 import com.example.demo.exceptions.ResourceNotFoundException;
@@ -27,6 +32,23 @@ public class UsuarioController {
 	@GetMapping("/usuarios")
 	public List<Usuario> getUsuarios() {
 	    return usuarioRepository.findAll();
+	}
+	
+	@GetMapping("/usuarios/search")
+	public List<Usuario> getUsuariosByNombresAndApellidos(@RequestParam(value = "nombres", required=false) String nombres, @RequestParam(value = "apellidos", required=false) String apellidos) {
+	    return usuarioRepository.getUsuariosByNombresAndApellidos(nombres, apellidos);
+	}
+	
+	@GetMapping("/usuarios/tareas")
+	public ResponseEntity<Tarea[]> getAlbums() {
+		HttpHeaders headers = new HttpHeaders();
+		String authorization = "asdf";
+		headers.set(HttpHeaders.AUTHORIZATION, authorization);
+		ResponseEntity<Tarea[]> responseEntity = 
+				   new RestTemplate().exchange(
+						   "http://localhost:8080/api/tareas", HttpMethod.GET, new HttpEntity<Object>(headers),
+						   Tarea[].class);
+		return responseEntity;
 	}
 	
 	@GetMapping("/usuarios/{id}")
